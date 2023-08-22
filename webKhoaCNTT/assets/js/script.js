@@ -61,3 +61,18 @@ const activeElem = function () {
 }
 
 addEventOnElem(window, "scroll", activeElem);
+
+
+
+window.onload()=function(){
+  fetch("thongtincuusinhvien.json").then(res => res.json()).then(data=>{
+    let a = document.querySelector("div.ttcsv");
+    let z="";
+    for(let k of data)
+    {
+      z+=`<div>${k.tt}</div>`
+      z+=`<img src="${k.hinh}"/>`
+    }
+    a.innerHTML=z;
+  })
+}
