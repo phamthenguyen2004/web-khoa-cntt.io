@@ -64,14 +64,26 @@ addEventOnElem(window, "scroll", activeElem);
 
 
 
-window.onload()=function(){
+window.onload = function(){
   fetch("thongtincuusinhvien.json").then(res => res.json()).then(data=>{
-    let a = document.querySelector("div.ttcsv");
+    let a = document.querySelector("ul.grid-list");
     let z="";
     for(let k of data)
     {
-      z+=`<div>${k.tt}</div>`
-      z+=`<img src="${k.hinh}"/>`
+      z+=
+            `<li>
+              <div class="blog-card">
+                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
+                  <img src="${k.hinh}" width="370" height="370" loading="lazy" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+                  <h3 class="h3">
+                    <a href="#" class="card-title">L${k.tt}</a>
+                  </h3>
+                </div>
+              </div>
+            </li>`
     }
     a.innerHTML=z;
   })
